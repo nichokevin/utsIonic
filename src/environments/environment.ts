@@ -10,8 +10,8 @@ export const environment = {
     projectId: "projectionic-c5d61",
     storageBucket: "projectionic-c5d61.appspot.com",
     messagingSenderId: "559045414520",
-    appId: "1:559045414520:web:ec0696bdbd37e3e2b1278d",
-    measurementId: "G-C8PMYRDB9X"
+    appId: "1:559045414520:web:66cb75a66abcf6edb1278d",
+    measurementId: "G-ZNT3RB5722"
   }
 };
 

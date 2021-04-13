@@ -1,10 +1,12 @@
   import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
   interface data {
     judul : string,
-    isi : string
+    isi : string,
+    nilai : string
   }
 @Component({
   selector: 'app-home',
@@ -16,21 +18,28 @@ export class HomePage {
   isiData : Observable<data[]>;
   isiDataColl : AngularFirestoreCollection<data>;
 
-  Judul : string;
-  Isi : string;
+  judul : string;
+  isi : string;
 
   constructor(
-    afs : AngularFirestore
+    afs : AngularFirestore,
+    private route: Router
   ) {
     this.isiDataColl = afs.collection('dataCoba');
     this.isiData = this.isiDataColl.valueChanges();
   }
 
-  simpan() {
-    this.isiDataColl.doc(this.Judul).set({
-      judul : this.Judul,
-      isi: this.Isi
-    })
+  input() {
+    this.route.navigate(['/input']);
   }
 
+  kliklist(judul:string){
+    console.log(judul)
+    this.route.navigate(['/detail',judul]);
+  }
+
+  delete(judul:string){
+    console.log(judul)
+    this.isiDataColl.doc(judul).delete()
+  }
 }

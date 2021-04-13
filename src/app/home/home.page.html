@@ -7,14 +7,29 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-input placeholder="Judul" [(ngModel)]="Judul"></ion-input>
-  <ion-input placeholder="Isi" [(ngModel)]="Isi"></ion-input>
-  <ion-button (click)="simpan()">Simpan</ion-button>
-  <br/>
-  <ion-list>
-    <ion-item *ngFor="let data of isiData | async">
-      <h1>{{data.judul}}</h1>
-      <p>{{data.isi}}</p>
+  <div *ngFor="let data of isiData | async">
+    <ion-item>
+      <ion-label (click)="kliklist(data.judul)">
+        <ion-card  class="min">
+          <ion-card-header>
+            <ion-card-title>{{data.judul}}</ion-card-title>
+            <ion-card-subtitle>{{data.tgl}}</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            {{data.nilai}}
+          </ion-card-content>
+        </ion-card>
+      </ion-label>
+      <div class="item-note" item-end>
+        <button ion-button clear>
+          <ion-icon name="create" style="zoom:2.0"></ion-icon>
+        </button>
+        <button ion-button clear (click)="delete(data.judul)">
+          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+        </button>
+      </div>
     </ion-item>
-  </ion-list>
+  </div>
+  <ion-button (click)="input()">Input</ion-button>
 </ion-content>
