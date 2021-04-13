@@ -38,6 +38,11 @@ export class HomePage {
     this.route.navigate(['/detail',judul]);
   }
 
+  edit(judul:string){
+    console.log(judul)
+    this.route.navigate(['/edit',judul]);
+  }
+
   delete(judul:string){
     console.log(judul)
     this.isiDataColl.doc(judul).delete()

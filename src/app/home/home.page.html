@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      UTS-c14180026-Web
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -22,7 +22,7 @@
         </ion-card>
       </ion-label>
       <div class="item-note" item-end>
-        <button ion-button clear>
+        <button ion-button clear (click)="edit(data.judul)">
           <ion-icon name="create" style="zoom:2.0"></ion-icon>
         </button>
         <button ion-button clear (click)="delete(data.judul)">

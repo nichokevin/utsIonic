@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'detail/:judul',
     loadChildren: () => import('./detail/detail.module').then( m => m.DetailPageModule)
   },
+  {
+    path: 'edit',
+    loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule)
+  },
+  {
+    path: 'edit/:judul',
+    loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule)
+  },
 ];
 
 @NgModule({

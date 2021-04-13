@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-
 interface data {
   judul : string,
   isi : string,
@@ -11,13 +10,12 @@ interface data {
   nilai : string,
   pic : any
 }
-
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.page.html',
-  styleUrls: ['./detail.page.scss'],
+  selector: 'app-edit',
+  templateUrl: './edit.page.html',
+  styleUrls: ['./edit.page.scss'],
 })
-export class DetailPage implements OnInit {
+export class EditPage implements OnInit {
 
   isiData : Observable<data[]>;
   isiDataColl : AngularFirestoreCollection<data>;
@@ -27,6 +25,7 @@ export class DetailPage implements OnInit {
   tgl : string;
   nilai:string;
   pic: any;
+  temp :string;
   constructor(
     private actRoute: ActivatedRoute,
     private route : Router,
@@ -38,6 +37,7 @@ export class DetailPage implements OnInit {
    }
 
   ngOnInit() {
+    this.temp = this.judul
     const temp = this.isiDataColl.doc(this.judul).valueChanges().subscribe(data => {
       this.judul=data.judul
       this.isi=data.isi
@@ -47,7 +47,16 @@ export class DetailPage implements OnInit {
     })
   }
 
-  home(){
+  edit(){
+    
+    this.isiDataColl.doc(this.temp).update({
+      judul : this.judul,
+      isi: this.isi,
+      tgl: this.tgl,
+      nilai: this.nilai,
+      pic: this.pic
+    })
     this.route.navigate(['/home']);
   }
+  
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detail</ion-title>
+    <ion-title>edit</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,6 +24,10 @@
     <ion-label position="floating">Nilai</ion-label>
     <ion-input placeholder="0-10" [(ngModel)]="nilai"></ion-input>
   </ion-item>
-
-  <ion-button (click)="home()">Back to home</ion-button>
+  
+  <ion-item>
+    <ion-label floating>Upload Picture</ion-label>
+    <ion-input type="file" [(ngModel)]="pic"></ion-input>
+  </ion-item>
+  <ion-button (click)="edit()">Input</ion-button>
 </ion-content>
