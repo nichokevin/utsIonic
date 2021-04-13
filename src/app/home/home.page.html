@@ -7,14 +7,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-input placeholder="Judul" [(ngModel)]="Judul"></ion-input>
+  <ion-input placeholder="Isi" [(ngModel)]="Isi"></ion-input>
+  <ion-button (click)="simpan()">Simpan</ion-button>
+  <br/>
+  <ion-list>
+    <ion-item *ngFor="let data of isiData | async">
+      <h1>{{data.judul}}</h1>
+      <p>{{data.isi}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
